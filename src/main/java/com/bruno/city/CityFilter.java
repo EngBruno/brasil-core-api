@@ -1,17 +1,13 @@
 package com.bruno.city;
 
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Id;
-
-import lombok.Data;
-
-@Data
-public class City {
-	
-	@Id
+@Getter
+@Setter
+public class CityFilter {
 	private Long id;
 	private Long code;
 	private String name;
 	private String UF;
-	
 }

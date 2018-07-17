@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bruno.city.repository.CityRepository" >
+	
+	<resultMap type="com.bruno.city.City" id="CityResult" >
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="code" column="codigo" />
+		<result property="UF" column="uf" />		
+	</resultMap>
+	
+	<select id="getCityByFilter" parameterType="map" resultMap="CityResult">
+		select c.id, c.codigo, c.Nome, c.uf 
+			from city c
+			where c.id = #{id} 
+	</select>
+	
+</mapper> 
