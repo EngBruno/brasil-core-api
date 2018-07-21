@@ -1,6 +1,7 @@
 package com.bruno.city;
 
 import org.junit.BeforeClass;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -16,5 +17,10 @@ public class CityResourseTest {
 //		 RestAssured.baseURI = "http://localhost";
 //	     RestAssured.port = 8080;
 	 }
+	
+	@Test
+	public void getCity() {
+		
+	}
 	
 }

@@ -2,7 +2,6 @@ package com.bruno.city;
 
 
 import javax.persistence.Id;
-
 import lombok.Data;
 
 @Data
@@ -13,5 +12,4 @@ public class City {
 	private Long code;
 	private String name;
 	private String UF;
-	
 }
