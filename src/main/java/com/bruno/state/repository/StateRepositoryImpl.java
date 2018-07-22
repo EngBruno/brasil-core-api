@@ -19,8 +19,7 @@ public class StateRepositoryImpl implements StateRepository {
 
 	@Override
 	public List<State> listStateByFilter(StateFilter stateFilter) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.sqlSession.selectList("getStateByFilter", stateFilter);
 	}
 	
 }

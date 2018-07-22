@@ -18,7 +18,6 @@ public class StateResource {
 	@GetMapping
 	public ResponseEntity<List<State>>listStateByFilter(StateFilter stateFilter){
 	List<State> list = stateService.listStateByFilter(stateFilter);
-	
 	return (list!=null)? ResponseEntity.ok(list):ResponseEntity.notFound().build();
 	
 	}

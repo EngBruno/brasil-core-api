@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bruno.region.repository.RegionRepository" >
+	
+	<resultMap type="com.bruno.region.Region" id="RegionRepository" >
+		<id property="id" column="id" />
+		<result property="name" column="nome" />		
+	</resultMap>
+	
+	<select id="getRegionById" parameterType="map" resultMap="RegionRepository">
+		select r.id, r.nome  
+			from region r
+			where r.id = #{id} 
+	</select>
+	
+	<select id="listRegion" parameterType="map" resultMap="RegionRepository">
+		select r.id, r.nome  
+			from region r
+			where 1=1
+	</select>
+	
+</mapper> 

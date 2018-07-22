@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bruno.state.repository.StateRepository" >
+	
+	<resultMap type="com.bruno.state.State" id="StateResult" >
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="code" column="codigo" />
+		<result property="UF" column="uf" />	
+		
+	</resultMap>
+	
+	<select id="getStateByFilter" parameterType="map" resultMap="StateResult">
+		select s.id, s.codigouf, s.nome, s.uf, s.regiao 
+		from state s where 1=1
+		
+		<if test="region != null" >
+			and s.regiao=#{region}
+		</if>
+		
+		<if test="uf != null" >
+			and s.uf = #{uf}
+		</if>
+		
+		
+		<if test="name != null" >
+			and s.nome like CONCAT('%', #{name},'%')
+		</if>
+		
+	</select>
+	
+</mapper> 

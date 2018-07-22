@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bruno.neighborhood.repository.NeighborhoodRepository" >
+	
+	<resultMap type="com.bruno.neighborhood.Neighborhood" id="NeighborhoodResult" >
+		<id property="id" column="id" />
+		<result property="name" column="nome" />
+		<result property="code" column="codigo" />
+		<result property="UF" column="uf" />		
+	</resultMap>
+	
+	<select id="listNeighborhoodByFilter" parameterType="map" resultMap="NeighborhoodResult">
+		select n.id, n.codigo, n.nome, n.uf  
+			from neighborhood n
+			where 1 = 1
+			<if test="uf != null"> and n.uf = #{uf} </if>
+			<if test="name != null"> and n.nome like CONCAT('%', #{name},'%')</if>
+			<if test="code != null"> and n.codigo = #{code}</if>
+			
+			LIMIT #{pageNumber}, #{pageSize}
+	</select>
+	
+	<select id="countNeighborhoodByFilter" parameterType="map" resultType="int">
+		select count(n.id) from neighborhood n
+			where 1 = 1
+			<if test="uf != null"> and n.uf = #{uf} </if>
+			<if test="name != null"> and n.nome like CONCAT('%', #{name},'%')</if>
+			<if test="code != null"> and n.codigo = #{code}</if>
+	</select>
+	
+</mapper> 
